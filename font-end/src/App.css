@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-bg{
+  width: 100vw;
+  height: 100%;
+  background-color: rgb(199, 107, 88);
+}
+
+.workspace{
+  width: 390px;
+  height: 844px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+}
+
+.adminworkspace{
+  width: 390px;
+  height: 844px;
+  background-color: rgba(204, 49, 17, 1);
+  border: 1px solid black;
+}
+
+.submit-btn{
+ width: 260px;
+ height: 52px;
+ border-radius: 20px !important;
+ margin-bottom: 16px;
+}
+
+.cancel-btn{
+  width: 260px;
+  height: 52px;
+  border-radius: 20px !important;
+  margin-bottom: 16px;
+ }
+
+.toggle{
+  background-color: rgb(250, 250, 250) !important;
+}
+
+.logo{
+  font-family: 'Luckiest Guy', cursive;
+  margin-left: 24px !important;
+}
+
+.nav-text{
+  color: rgba(204, 49, 17, 1)!important;
+  font-weight: 500 !important;
+  font-size: 16px;
+  padding: 16px , 0px;
+}
+
+.body-text{
+  font-family:'Poppins', sans-serif ;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.header-text{
+  font-family:'Poppins', sans-serif ;
+  font-size: 20px;
+  font-weight: 600;
+  color: #cc3111 ;
+  margin-bottom: 8px;
+}
+
+.default-margin-top{
+  margin-top: 108px;
+}
+
+.padding-bottom{
+  padding-bottom: 26px !important;
+}
+
+.nav-toggle{
+  background-color: rgb(255, 255, 255);
+  color:rgba(204, 49, 17, 1) ;
+  padding: 0px 24px;
+ 
+}
+
+.nav-toggle:hover{
+  background-color:rgba(204, 49, 17, 1);
+  color: aliceblue;
+}
+
+.nav-text:hover{
+  color: aliceblue !important;
+}
+
+/* .loginform{
+  width: 358px !important;
+} */
+
+a{
+  text-decoration: none !important;
+  color: rgba(204, 49, 17, 1) !important
+}
+
+p{
+  font-family:'Poppins', sans-serif ;
+}
+
+.color-white{
+  color: white !important;
+}
+.color-red{
+  color: rgba(204, 49, 17, 1) !important
+}
+
+.background-host{
+  background-color: rgba(204, 49, 17, 1) !important;
+}
+
+.background-joined{
+  background-color: #e1bc00 !important;
+}
+
+
+.form{
+  color:'rgba(204, 49, 17, 1)' ;
+  margin-bottom: 16px;
+  width:358px;
+  height:58px;
+  border: 0.5px solid rgba(204, 49, 17, 1);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(204, 49, 17, 1);
+}
+.formsearch{
+  color:'rgba(204, 49, 17, 1)' ;
+  margin-bottom: 16px;
+  width:258px;
+  height:38px;
+  border: 0.5px solid rgba(204, 49, 17, 1);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(204, 49, 17, 1);
+}
+
+.formfield{
+  color:'rgba(204, 49, 17, 1)' ;
+  margin-bottom: 16px;
+  width:235px;
+  height:58px;
+  border: 0.5px solid rgba(204, 49, 17, 1);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: rgba(204, 49, 17, 1);
+}
+
+.uploadbtn{
+  text-decoration: none;
+  color: rgba(204, 49, 17, 1);
+  background-color:rgb(255, 255, 255);
+  border: 0.5px solid rgba(204, 49, 17, 1);
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+
+}
+.uploadbtn:hover{
+ 
+  color: rgb(255, 255, 255);
+  background-color:rgba(204, 49, 17, 1);
+}
+
+.fieldcard{
+  width: 358px;
+  height: 90px;
+  border: 1px solid rgba(171, 171, 171, 0.478);
+  border-radius: 10px;
+}
+
+.search-result{
+  width: 326px;
+  height: auto;
+  /* border: 1px solid rgba(37, 37, 37, 0.182); */
+  overflow: auto;
+  text-align: center;
+  background-color: #ffffff;
+  margin-top: 5px;
+  box-shadow: 3px 3px 10px rgba(46, 46, 46, 0.476);
+  }
+
+.text-search-result{
+  
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  color: rgba(204, 49, 17, 1)
+}
+
+.text-search-result:hover{
+  background-color: rgba(204, 49, 17, 1);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.createForm{
+  color:'rgba(204, 49, 17, 1)' ;
+  padding: 8px;
+  border: 0.5px solid rgba(204, 49, 17, 1);
+ 
+  
+  color: rgba(204, 49, 17, 1);
+}
+
+.search-popup{
+  border: 0.5px solid rgb(203, 203, 203);
+}
+
+.search-dropdown{
+  color: rgba(204, 49, 17, 1);
+  font-weight: 500;
+  border: 1px solid rgba(204, 49, 17, 1);
+  border-radius:10px;
+  padding: 10px;
+
+}
+
+.hovertext:hover{
+  color: #cc3111;
+  cursor: pointer;
+}
