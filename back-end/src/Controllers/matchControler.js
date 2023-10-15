@@ -78,7 +78,6 @@ exports.getField = async (req, res, next) => {
     const fields = await Field.findAll();
     req.field = fields;
     next();
-    // res.json({ field: fields });
   } catch (err) {
     next();
   }
@@ -146,9 +145,7 @@ exports.createMatch = async (req, res, next) => {
 
 exports.createRoom = async (req, res, next) => {
   try {
-    const { 
-      // myTeam,
-       maxPlayer, date, fieldId } = req.body;
+    const { maxPlayer, date, fieldId } = req.body;
     const createRoomData = {};
     const hostData = {};
 
@@ -158,15 +155,13 @@ exports.createRoom = async (req, res, next) => {
       createRoomData.field_id = fieldId;
     }
     createRoomData.date = date;
-    createRoomData.myTeam = '1';
+    createRoomData.myTeam = "1";
     createRoomData.maxPlayer = maxPlayer;
 
     const roomCreate = await Room.create(createRoomData);
 
     req.getRoom = roomCreate;
-    next()
-    // res.json({ msg: roomCreate });
-    // next();
+    next();
   } catch (err) {
     res.json({ msg: err });
   }
@@ -196,9 +191,7 @@ exports.deleteField = async (req, res, next) => {
       await Field.destroy({ where: { id: target } });
       res.json({ msg: "Delete success" });
     }
-    
   } catch (err) {
     console.log(err);
-    // throw new AppError("Error", 500);
   }
 };

@@ -17,21 +17,25 @@ function Vote() {
   const [voteOpen, setVoteOpen] = useState(false);
   const navigate = useNavigate();
   const { AuthenUser, user } = useContext(authContext);
-  const { createUserVote, createVote, GetVoteResult, voteResult,userLevel,UpdateUserLevel } =
-    useContext(voteContext);
-  // const {GetJoinRoom} = useContext(roomContext)
-  // const playerData = localStorage.getItem("userData");
+  const {
+    createUserVote,
+    createVote,
+    GetVoteResult,
+    voteResult,
+    userLevel,
+    UpdateUserLevel,
+  } = useContext(voteContext);
+
   const { playerData, FetchDataUser } = useContext(playerContext);
   const userid = localStorage.getItem("userId");
-  const roomId = localStorage.getItem("roomId");
+
   const joinStatus = localStorage.getItem("joinStatus");
 
   AuthenUser();
   FetchDataUser(userid);
   console.log(userid);
   GetVoteResult(userid);
-  UpdateUserLevel(userid,voteResult.sumVote)
-  
+  UpdateUserLevel(userid, voteResult.sumVote);
 
   const handleVoteOpen = () => {
     setVoteOpen((current) => !current);
@@ -94,8 +98,7 @@ function Vote() {
               />
             )}
           </div>
-          {
-          userid == user.id ? (
+          {userid == user.id ? (
             <UserStatus
               joinrate={voteResult.sumJoin}
               sportmanship={voteResult.sumSportmanship}
@@ -103,8 +106,7 @@ function Vote() {
               punctual={voteResult.sumPunctual}
               maxScore={voteResult.sumVote}
             />
-          ) : joinStatus === "true" ? 
-          (
+          ) : joinStatus === "true" ? (
             voteOpen ? (
               <div className="d-flex flex-column align-items-center">
                 <p className="header-text" style={{ marginTop: "16px" }}>
@@ -120,22 +122,23 @@ function Vote() {
                 </div>
               </div>
             ) : (
-              <UserStatus 
+              <UserStatus
+                joinrate={voteResult.sumJoin}
+                sportmanship={voteResult.sumSportmanship}
+                moody={voteResult.sumMoody}
+                punctual={voteResult.sumPunctual}
+                maxScore={voteResult.sumVote}
+              />
+            )
+          ) : (
+            <UserStatus
               joinrate={voteResult.sumJoin}
               sportmanship={voteResult.sumSportmanship}
               moody={voteResult.sumMoody}
               punctual={voteResult.sumPunctual}
-              maxScore={voteResult.sumVote}/>
-            )
-          ) : (
-            <UserStatus 
-            joinrate={voteResult.sumJoin}
-            sportmanship={voteResult.sumSportmanship}
-            moody={voteResult.sumMoody}
-            punctual={voteResult.sumPunctual}
-            maxScore={voteResult.sumVote}/>
-          )
-          }
+              maxScore={voteResult.sumVote}
+            />
+          )}
           {userid == user.id ? (
             ""
           ) : joinStatus === "true" ? (
@@ -143,9 +146,7 @@ function Vote() {
               <div
                 onClick={async () => {
                   await createUserVote(userid, createVote);
-                  // await updateUserLevel(userid,voteResult.sumVote)
-                  // console.log(userLevel);
-                  // console.log(createVote);
+
                   handleVoteOpen();
                 }}
               >
@@ -155,8 +156,6 @@ function Vote() {
               <div
                 onClick={async () => {
                   handleVoteOpen();
-                  // await createUserVote(userid, createVote);
-                  // console.log(createVote);
                 }}
               >
                 <NormalButton>Vote Player</NormalButton>
@@ -165,8 +164,6 @@ function Vote() {
           ) : (
             ""
           )}
-
-          {/* <NormalButton variant={"secondary"}>Back</NormalButton> */}
         </div>
       ) : (
         <Loading margintop={"150px"} />

@@ -7,17 +7,19 @@ import { Icon } from "@iconify/react";
 import FieldCardDashboard from "../Utility/FieldCarddashboard";
 function FieldDashBoard() {
   const { AuthenUser } = useContext(authContext);
-  const { field, GetfieldData,setFieldDefault } = useContext(fieldContext);
+  const { field, GetfieldData, setFieldDefault } = useContext(fieldContext);
   const [input, setInput] = useState(null);
-  const [fieldSearch,setFieldSearch] = useState(null)
+  const [fieldSearch, setFieldSearch] = useState(null);
   AuthenUser();
   GetfieldData();
   const fields = field;
- 
-  const handleSearch = (input) =>{
-   setFieldSearch(fields.filter((item)=>item.fieldName.toLowerCase().includes(input)))
-  }
-  
+
+  const handleSearch = (input) => {
+    setFieldSearch(
+      fields.filter((item) => item.fieldName.toLowerCase().includes(input))
+    );
+  };
+
   return (
     <div className="workspace d-flex flex-column align-items-center ">
       <NavigationBar />
@@ -54,33 +56,31 @@ function FieldDashBoard() {
               border: "none",
               backgroundColor: "white",
             }}
-            onClick={()=>handleSearch(input)}
+            onClick={() => handleSearch(input)}
           >
             <Icon icon="bi:search" color="#cc3111" width="30" height="30" />
           </button>
         </div>
         <div style={{ height: "600px", marginTop: "8px", overflow: "scroll" }}>
-          {fieldSearch?
-          fieldSearch.map((item) => (
-            <div onClick={()=> setFieldDefault(item)}>
-              <FieldCardDashboard
-                key={item.id}
-                name={item.fieldName}
-                picture={item.imageField}
-                
-              />
-            </div>
-          ))
-          
-          : fields.map((item) => (
-            <div onClick={()=>setFieldDefault(item) }>
-              <FieldCardDashboard
-                key={item.id}
-                name={item.fieldName}
-                picture={item.imageField}
-              />
-            </div>
-          ))}
+          {fieldSearch
+            ? fieldSearch.map((item) => (
+                <div onClick={() => setFieldDefault(item)}>
+                  <FieldCardDashboard
+                    key={item.id}
+                    name={item.fieldName}
+                    picture={item.imageField}
+                  />
+                </div>
+              ))
+            : fields.map((item) => (
+                <div onClick={() => setFieldDefault(item)}>
+                  <FieldCardDashboard
+                    key={item.id}
+                    name={item.fieldName}
+                    picture={item.imageField}
+                  />
+                </div>
+              ))}
         </div>
       </div>
     </div>

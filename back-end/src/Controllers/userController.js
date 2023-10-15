@@ -126,7 +126,6 @@ exports.editPost = async (req, res, next) => {
       await Post.update({ title: editTitle }, { where: { id: postId } });
       req.findPostEdit = findPostEdit;
       next();
-      // res.json({ result: "edit success" });
     } else {
       res.json({ result: "edit fail" });
     }
@@ -141,7 +140,6 @@ exports.updateDate = async (req, res, next) => {
     { date: date },
     { where: { id: req.findPostEdit[0].user_post_id } }
   );
-  // const findDateEdit = await UserPost.findAll({where:{id:req.findPostEdit[0].user_post_id}})
 
   res.json({ result: "Edit Success" });
 };
@@ -157,24 +155,23 @@ exports.deletePost = async (req, res, next) => {
       attributes: ["id", "user_post_id"],
     });
 
-    req.postDelete = result
-    next()
+    req.postDelete = result;
+    next();
   } catch (err) {
     next(err);
   }
 };
 
-exports.deleteUserPost = async (req,res,next) => {
-  try{
+exports.deleteUserPost = async (req, res, next) => {
+  try {
     const deletePost = await Post.destroy({
-      where:{id:req.postDelete[0].id}
-    })
+      where: { id: req.postDelete[0].id },
+    });
     const deleteUserPost = await UserPost.destroy({
-      where:{id:req.postDelete[0].user_post_id}
-    })
-    res.json({result:'delete success'})
+      where: { id: req.postDelete[0].user_post_id },
+    });
+    res.json({ result: "delete success" });
+  } catch (err) {
+    next(err);
   }
-  catch(err) {
-    next(err)
-  }
-}
+};

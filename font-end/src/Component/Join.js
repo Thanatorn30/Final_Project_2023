@@ -18,8 +18,6 @@ function Join() {
   GetJoinRoom(roomId);
   console.log(userInroom);
 
-  // userInroom.userInRoom.map((item, index) => console.log(index + 1));
-
   return (
     <div className="workspace d-flex flex-column align-items-center">
       <NavigationBar />
@@ -59,8 +57,6 @@ function Join() {
                 roomId={item.Room.id}
                 playerInfomaton={item.User}
                 level={item.User.level}
-                // color={}
-                // key={}
               />
             ))}
           </div>

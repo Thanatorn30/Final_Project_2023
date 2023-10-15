@@ -31,15 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "RESTRICT",
     });
 
-    // Field.belongsTo(db.Admin, {
-    //   foreignKey: {
-    //     name: "admin_id",
-    //     allowNull: false,
-    //   },
-    //   onDelete: "RESTRICT",
-    //   onUpdate: "RESTRICT",
-    // });
-
     Field.belongsTo(db.User, {
       foreignKey: {
         name: "user_id",

@@ -16,7 +16,6 @@ function Homepage() {
 
   AuthenUser();
   GetVoteUserResult();
-  // console.log(voteResult);
 
   return (
     <div className="workspace d-flex flex-column align-items-center">
@@ -40,14 +39,14 @@ function Homepage() {
               position={user.position}
               profileImage={user.profileImage}
               vote={voteResult ? voteResult.sumVote : null}
-              level = {user.level?user.level:0}
+              level={user.level ? user.level : 0}
             />
             <UserStatus
-              joinrate={voteResult?voteResult.sumJoin:null}
-              sportmanship={voteResult?voteResult.sumSportmanship:null}
-              moody={voteResult?voteResult.sumMoody:null}
-              punctual={voteResult?voteResult.sumPunctual:null}
-              maxScore={voteResult?voteResult.sumVote:null}
+              joinrate={voteResult ? voteResult.sumJoin : null}
+              sportmanship={voteResult ? voteResult.sumSportmanship : null}
+              moody={voteResult ? voteResult.sumMoody : null}
+              punctual={voteResult ? voteResult.sumPunctual : null}
+              maxScore={voteResult ? voteResult.sumVote : null}
             />
             <div
               onClick={() => {
@@ -61,7 +60,7 @@ function Homepage() {
           </div>
         </div>
       ) : (
-        <Loading margintop={'300px'} />
+        <Loading margintop={"300px"} />
       )}
     </div>
   );

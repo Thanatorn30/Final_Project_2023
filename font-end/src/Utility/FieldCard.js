@@ -5,15 +5,14 @@ import { useContext } from "react";
 import { roomContext } from "../context/RoomContext";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../context/AuthContext";
-import { playerContext } from "../context/PlayerContext";
-function FieldCard(props) {
-  const { AuthenUser, user } = useContext(authContext);
-  const { SaveRoomId, setJoinRoomData} = useContext(roomContext);
-  
-  const navigate = useNavigate();
-  // AuthenUser();
 
-  const { alert, GetJoinRoom,setBack } = useContext(roomContext);
+function FieldCard(props) {
+  const { user } = useContext(authContext);
+  const { SaveRoomId } = useContext(roomContext);
+
+  const navigate = useNavigate();
+
+  const { alert, setBack } = useContext(roomContext);
   const {
     field,
     active,
@@ -27,30 +26,23 @@ function FieldCard(props) {
     hours,
     value,
     checkUser,
-    roomId,
-    index,
-    searchResult,
-    matchInfo
-  } = props;
 
-  
+    matchInfo,
+  } = props;
 
   return (
     <div
-    className="hovertext"
-      onClick={async ()=>matchInfo?(
-        await SaveRoomId(matchInfo),
-        await localStorage.setItem("joinStatus", JSON.stringify(true)),
-        navigate("/joinmatch"),
-        setBack(false)
-      ) 
-        :  
-        console.log('NO')}
+      className="hovertext"
+      onClick={async () =>
+        matchInfo
+          ? (await SaveRoomId(matchInfo),
+            await localStorage.setItem("joinStatus", JSON.stringify(true)),
+            navigate("/joinmatch"),
+            setBack(false))
+          : console.log("NO")
+      }
     >
-      {checkUser === user.id ? null : 
-      
-
-      (
+      {checkUser === user.id ? null : (
         <Card
           className={`${
             joined
@@ -193,36 +185,33 @@ function FieldCard(props) {
                 <div
                   onClick={async () => {
                     await SaveRoomId(value.room_id);
-                    await localStorage.setItem("joinStatus", JSON.stringify(false))
+                    await localStorage.setItem(
+                      "joinStatus",
+                      JSON.stringify(false)
+                    );
                     navigate("/joinmatch");
-                    setBack(true)
-                    
-                    
+                    setBack(true);
                   }}
                 >
-                  
-                    <div>
-                      <Button
-                        className={`${active}`}
-                        variant="outline-danger"
-                        style={{
-                          marginTop: "10px",
-                          height: "40px",
-                          width: "150px",
-                        }}
-                      >
-                        Join
-                      </Button>
-                    </div>
-                
+                  <div>
+                    <Button
+                      className={`${active}`}
+                      variant="outline-danger"
+                      style={{
+                        marginTop: "10px",
+                        height: "40px",
+                        width: "150px",
+                      }}
+                    >
+                      Join
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>
           </Card.Body>
         </Card>
-      )
-      
-      }
+      )}
     </div>
   );
 }

@@ -62,19 +62,16 @@ exports.createHostJoin = async (req, res, next) => {
 // ----------Player join--------------
 exports.joined = async (req, res, next) => {
   try {
-    const { roomId, } = req.body;
+    const { roomId } = req.body;
     const joinRoom = {};
 
-    joinRoom.join_status = 'Joined';
+    joinRoom.join_status = "Joined";
     joinRoom.user_id = req.user.id;
     joinRoom.room_id = roomId;
-    
-    const joined = await Join.create(joinRoom);
-    
-    res.json({msg:joined})
-    
-    
 
+    const joined = await Join.create(joinRoom);
+
+    res.json({ msg: joined });
   } catch (err) {
     res.json({ msg: err });
   }
@@ -85,10 +82,10 @@ exports.searchRoom = async (req, res, next) => {
   try {
     const { fieldName, date, time } = req.body;
     if (fieldName && date && time) {
-     const search =  await Join.findAll({
+      const search = await Join.findAll({
         attributes: [
           "room_id",
-  
+
           [sequelize.fn("COUNT", sequelize.col("Join.room_id")), "sumUser"],
         ],
         group: ["room_id"],
@@ -96,19 +93,16 @@ exports.searchRoom = async (req, res, next) => {
           {
             model: Room,
             include: [
-              { model: Field, 
-                where: { field_name: fieldName }
-              },
+              { model: Field, where: { field_name: fieldName } },
               {
                 model: Create,
-                where: { [Op.and]: [{ date: date }, { time: time }] }
-
+                where: { [Op.and]: [{ date: date }, { time: time }] },
               },
             ],
           },
         ],
       });
-      const searchResult = search.filter((item)=>item.Room !== null)
+      const searchResult = search.filter((item) => item.Room !== null);
       res.json({ msg: "found", room: searchResult });
     } else {
       next();
@@ -164,18 +158,13 @@ exports.joinRoom = async (req, res, next) => {
     const join = await Join.findAll({
       where: { room_id: roomId },
       attributes: [
-        // "room_id",
         "join_status",
         "user_id",
 
         [sequelize.fn("COUNT", sequelize.col("Join.user_id")), "sumUser"],
       ],
-      group: [
-        // "room_id",
-        "join_status",
-        "user_id",
-      ],
-      // -----------------------------------------
+      group: ["join_status", "user_id"],
+
       include: [
         { model: User },
         {
@@ -186,49 +175,45 @@ exports.joinRoom = async (req, res, next) => {
           ],
         },
       ],
-      // -----------------------------------------
     });
     res.json({ userInRoom: join });
-   
   } catch (err) {
     next(err);
   }
 };
 
-exports.deleteUser = async(req,res,next) => {
-  try{
+exports.deleteUser = async (req, res, next) => {
+  try {
     const user = req.params["id"];
     const roomId = req.params["room"];
     const userDelete = await Join.destroy({
-      where:{
-        user_id:user,
-        room_id:roomId
-      }
-    })
-    res.json({msg:userDelete})
-  }catch(err){
-    next(err)
+      where: {
+        user_id: user,
+        room_id: roomId,
+      },
+    });
+    res.json({ msg: userDelete });
+  } catch (err) {
+    next(err);
   }
-}
+};
 
-
-exports.deleteRoom = async(req,res,next) => {
-  try{
+exports.deleteRoom = async (req, res, next) => {
+  try {
     const roomId = req.params["room"];
     const userDelete = await Join.destroy({
-      where:{
-        room_id:roomId
+      where: {
+        room_id: roomId,
       },
-      include:[{model:Room}]
-    })
+      include: [{ model: Room }],
+    });
     const deleyeRoom = await Room.destroy({
-      where:{
-        id:roomId
-      }
-    })
-    res.json({msg:'success'})
-  }catch(err){
-    next(err)
+      where: {
+        id: roomId,
+      },
+    });
+    res.json({ msg: "success" });
+  } catch (err) {
+    next(err);
   }
-}
-
+};

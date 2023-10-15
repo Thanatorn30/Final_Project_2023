@@ -6,7 +6,7 @@ const userController = require("../Controllers/userController");
 const upload = require("../Middleware/upload");
 const matchContrl = require("../Controllers/matchControler");
 const roomController = require("../Controllers/roomController");
-const voteController = require('../Controllers/voteController')
+const voteController = require("../Controllers/voteController");
 // -------POST -------------
 router.post("/register", auth.register);
 router.post("/login", auth.login);
@@ -65,7 +65,6 @@ router.delete(
 // ---------Get Match Day -------
 router.get("/user/matchday", auth.authen, roomController.getMatchday);
 
-
 // ----------Get room-----------
 router.post(
   "/search/room",
@@ -78,45 +77,79 @@ router.post(
 router.post("/user/joinroom", auth.authen, roomController.joinRoom);
 
 // ------ join --------------------
-router.post("/join",auth.authen,roomController.joined)
+router.post("/join", auth.authen, roomController.joined);
 
 // ------Delete user joined---------
-router.delete("/delete/join/:id/roomId/:room",auth.authen,roomController.deleteUser)
+router.delete(
+  "/delete/join/:id/roomId/:room",
+  auth.authen,
+  roomController.deleteUser
+);
 
 // ------Delete Room---------
-router.delete("/delete/roomId/:room",auth.authen,roomController.deleteRoom)
+router.delete("/delete/roomId/:room", auth.authen, roomController.deleteRoom);
 
 // -------Get User Data------
-router.get("/getuser/:id",auth.authen,userController.getUserData)
+router.get("/getuser/:id", auth.authen, userController.getUserData);
 
 // Comment
 
 // ----Create Comment-------
-router.post("/comment/user/:id",auth.authen,userController.userComment,userController.createPost)
+router.post(
+  "/comment/user/:id",
+  auth.authen,
+  userController.userComment,
+  userController.createPost
+);
 
 //-----Get Comment by user id---------
-router.get("/comments/:id",auth.authen,userController.fetchComment)
+router.get("/comments/:id", auth.authen, userController.fetchComment);
 
 //------GET comment to edit by post id ----------
-router.get("/get/title/comment/:id",auth.authen,userController.fetchPost)
+router.get("/get/title/comment/:id", auth.authen, userController.fetchPost);
 
 //----Edit post-----------
-router.patch('/edit/post/:id',auth.authen,userController.editPost,userController.updateDate)
+router.patch(
+  "/edit/post/:id",
+  auth.authen,
+  userController.editPost,
+  userController.updateDate
+);
 
 // ----Delete post-------
-router.delete('/delete/post/:id',auth.authen,userController.deletePost,userController.deleteUserPost)
+router.delete(
+  "/delete/post/:id",
+  auth.authen,
+  userController.deletePost,
+  userController.deleteUserPost
+);
 
 // -----------Vote---------
 // ------Create vote----------
-router.post('/user/getvote/:id',auth.authen,voteController.createVote,voteController.getSumPoint)
+router.post(
+  "/user/getvote/:id",
+  auth.authen,
+  voteController.createVote,
+  voteController.getSumPoint
+);
 
 // -------Get sum vote any user--------
-router.get('/user/votescore/:id',auth.authen,voteController.sumVote,voteController.getSumVote)
+router.get(
+  "/user/votescore/:id",
+  auth.authen,
+  voteController.sumVote,
+  voteController.getSumVote
+);
 
 // ------Get sum vote user-----------
-router.get('/user/votescore',auth.authen,voteController.sumVoteUser,voteController.getSumVoteUser)
+router.get(
+  "/user/votescore",
+  auth.authen,
+  voteController.sumVoteUser,
+  voteController.getSumVoteUser
+);
 
 // -----Update user level-------------
-router.patch('/user/level',auth.authen,voteController.updateUserLevel)
+router.patch("/user/level", auth.authen, voteController.updateUserLevel);
 
 module.exports = router;

@@ -4,22 +4,33 @@ import { Icon } from "@iconify/react";
 import Button from "react-bootstrap/Button";
 import { authContext } from "../context/AuthContext";
 import { roomContext } from "../context/RoomContext";
-import {playerContext} from "../context/PlayerContext";
+import { playerContext } from "../context/PlayerContext";
 function JoinCard(props) {
-  const { userImage, level, name, position, icon, color,value,roomId,playerInfomaton } = props;
+  const {
+    userImage,
+    level,
+    name,
+    position,
+    icon,
+    color,
+    value,
+    roomId,
+    playerInfomaton,
+  } = props;
   const { AuthenUser, user } = useContext(authContext);
-  const { userInroom,DeleteUserJoin,deleteUser } = useContext(roomContext);
-  const {saveUserId,cardColor} = useContext(playerContext)
-  AuthenUser()
+  const { userInroom, DeleteUserJoin, deleteUser } = useContext(roomContext);
+  const { saveUserId, cardColor } = useContext(playerContext);
+  AuthenUser();
   const roomid = localStorage.getItem("roomId");
-  
+
   return (
     <div style={{ marginTop: "8px" }}>
-      <Card style={{ cursor: "pointer" }} onClick={() => {
-      
-        saveUserId(playerInfomaton.id)
-
-        }}>
+      <Card
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          saveUserId(playerInfomaton.id);
+        }}
+      >
         <Card.Body
           className=" d-flex align-items-center "
           style={{
@@ -60,31 +71,25 @@ function JoinCard(props) {
               ({position})
             </p>
             <p style={{ marginBottom: "0px", textAlign: "end" }}>
-              {
-                icon === "host" ? (
-                  <Icon
-                    onClick={() => console.log("test king mark")}
-                    icon={"fa-solid:chess-king"}
-                    color={color ? "#cc3111" : "rgb(40, 38, 38)"}
-                    width="24px"
-                    height="24px"
-                  />
-                ) : userInroom.userInRoom[0].user_id === user.id ? (
-                  <Icon
-                    onClick={() => 
-                      DeleteUserJoin(value,roomid)
-                      
-                    }
-                    icon={"fa6-solid:xmark"}
-                    color={color ? "#cc3111" : "rgb(40, 38, 38)"}
-                    width="24px"
-                    height="24px"
-                  />
-                ) : (
-                  ""
-                )
-           
-              }
+              {icon === "host" ? (
+                <Icon
+                  onClick={() => console.log("test king mark")}
+                  icon={"fa-solid:chess-king"}
+                  color={color ? "#cc3111" : "rgb(40, 38, 38)"}
+                  width="24px"
+                  height="24px"
+                />
+              ) : userInroom.userInRoom[0].user_id === user.id ? (
+                <Icon
+                  onClick={() => DeleteUserJoin(value, roomid)}
+                  icon={"fa6-solid:xmark"}
+                  color={color ? "#cc3111" : "rgb(40, 38, 38)"}
+                  width="24px"
+                  height="24px"
+                />
+              ) : (
+                ""
+              )}
             </p>
           </div>
         </Card.Body>

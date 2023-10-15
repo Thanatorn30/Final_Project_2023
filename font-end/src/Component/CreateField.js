@@ -37,7 +37,6 @@ function CreateField() {
         .catch((err) => {
           console.log(err);
         });
-      // console.log("Save",fieldDefault.id);
     } catch (err) {
       console.log(err);
     }
@@ -58,12 +57,10 @@ function CreateField() {
         .then((data) => {
           alert("Update Success");
           navigate("/fielddashboard");
-          // window.location.reload();
         })
         .catch((err) => {
           console.log(err);
         });
-      // console.log("Update");
     } catch (err) {
       console.log(err);
     }
@@ -176,5 +173,3 @@ function CreateField() {
 }
 
 export default CreateField;
-
-// -----------------------แก้ Update field----------------

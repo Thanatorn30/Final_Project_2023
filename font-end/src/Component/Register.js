@@ -99,7 +99,6 @@ function Register() {
           onClick={handleRegister}
         >
           <NormalButton>REGISTER</NormalButton>
-        
         </div>
         <div style={{ textAlign: "center", marginTop: "40px" }}>
           <p>

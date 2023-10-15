@@ -6,8 +6,7 @@ export const authContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
-  const [admin, setAdmin] = useState('');
-
+  const [admin, setAdmin] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,13 +20,12 @@ const AuthContextProvider = ({ children }) => {
         })
         .then((data) => {
           if (data.data.user) {
-             setUser(data.data.user);
-             if(data.data.user.name == 'Admin'){
-              localStorage.setItem("admin", data.data.user.name)
-              
-             }else{
-               console.log(data.data.user);
-             }
+            setUser(data.data.user);
+            if (data.data.user.name == "Admin") {
+              localStorage.setItem("admin", data.data.user.name);
+            } else {
+              console.log(data.data.user);
+            }
           } else {
             navigate("/");
             alert("Please Login");
@@ -40,23 +38,23 @@ const AuthContextProvider = ({ children }) => {
     }, []);
   };
 
-  const UpdateUser = (input)=>{
-    setUser(input)
-  }
+  const UpdateUser = (input) => {
+    setUser(input);
+  };
 
   const SingOut = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("admin");
   };
 
-  const getAdmin = (input) =>{
-    setAdmin(input)
-  }
-
-  
+  const getAdmin = (input) => {
+    setAdmin(input);
+  };
 
   return (
-    <authContext.Provider value={{ user, AuthenUser, SingOut,UpdateUser,getAdmin,admin }}>
+    <authContext.Provider
+      value={{ user, AuthenUser, SingOut, UpdateUser, getAdmin, admin }}
+    >
       {children}
     </authContext.Provider>
   );

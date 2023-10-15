@@ -1,12 +1,9 @@
-import { authContext } from "../context/AuthContext";
-import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Toggle from "./Toggle";
 
 function NavigationBar() {
-  const {admin} = useContext(authContext)
-  const adminChek = localStorage.getItem('admin')
+  const adminChek = localStorage.getItem("admin");
 
   return (
     <div className="z-3 position-absolute ">
@@ -19,7 +16,10 @@ function NavigationBar() {
         }}
       >
         <Container className="p-0 m-0">
-          <Navbar.Brand href={adminChek?"/fielddashboard":"/home"} className="logo text-light">
+          <Navbar.Brand
+            href={adminChek ? "/fielddashboard" : "/home"}
+            className="logo text-light"
+          >
             Ballon d'Or
           </Navbar.Brand>
           <Navbar.Toggle

@@ -18,7 +18,7 @@ exports.register = async (req, res, next) => {
       throw new AppError("Name is require", 400);
     }
 
-    if (!email || email==='admin@gmail') {
+    if (!email || email === "admin@gmail") {
       throw new AppError("Email is require", 400);
     }
     if (!validatEmail) {
@@ -75,7 +75,7 @@ exports.login = async (req, res, next) => {
     const token = jwt.sign({ email: user[0].email }, secretKey, {
       expiresIn: "1d",
     });
-    res.status(200).json({ token: token ,user:user[0]});
+    res.status(200).json({ token: token, user: user[0] });
   } catch (err) {
     console.log(err);
     next();

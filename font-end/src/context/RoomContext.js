@@ -22,9 +22,6 @@ const RoomContextProvider = ({ children }) => {
   const [checkUser, setCheckUser] = useState(null);
   const [deleteUser, setDeleteUser] = useState({ roomId: "", userId: "" });
   const [joinRoomData, setJoinRoomData] = useState(null);
-  // const [findRoomToJoin, setFindRoomToJoin] = useState(null);
-
-  // -------------------------------------
 
   const navigate = useNavigate();
   const GetMatchday = () => {
@@ -100,7 +97,6 @@ const RoomContextProvider = ({ children }) => {
   };
 
   const GetSearchRoom = async () => {
-    // useState(()=>{
     console.log(search);
     const token = localStorage.getItem("user");
     await axios
@@ -115,8 +111,6 @@ const RoomContextProvider = ({ children }) => {
         handleSearchOpen();
       })
       .catch((err) => console.log(err));
-
-    // },[])
   };
 
   const joinRoom = async (data) => {
@@ -171,7 +165,6 @@ const RoomContextProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-
   const DeleteRoom = async (roomid) => {
     const token = localStorage.getItem("user");
     await axios
@@ -183,7 +176,7 @@ const RoomContextProvider = ({ children }) => {
         }
       )
       .then((data) => {
-        navigate('/alert')
+        navigate("/alert");
       })
       .catch((err) => console.log(err));
   };
@@ -225,7 +218,7 @@ const RoomContextProvider = ({ children }) => {
         SaveRoomId,
         setJoinRoomData,
         joinRoomData,
-        DeleteRoom
+        DeleteRoom,
 
         // ------------
       }}

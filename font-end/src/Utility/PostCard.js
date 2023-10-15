@@ -8,31 +8,23 @@ function Post(props) {
   const { name, date, value } = props;
 
   const userId = localStorage.getItem("userId");
-  // const editPost = localStorage.getItem('editPost')
+
   const navigate = useNavigate();
   const {
     comment,
     setComment,
     setDatePost,
-    datePost,
     postComment,
     playerData,
     FetchDataUser,
     updatePost,
     title,
-    setTitle,
-    fetchTitle,
-    setEditPost,
   } = useContext(playerContext);
   const dateDay = new Date().toJSON().slice(0, 10);
   FetchDataUser(userId);
   setDatePost(dateDay);
   const titleId = localStorage.getItem("titleId");
   const userTitle = localStorage.getItem("userTitle");
-
-  
-
-
 
   // ----------------------------//
 
@@ -87,8 +79,7 @@ function Post(props) {
             )}
             <div
               onClick={() => {
-                
-                setComment('')
+                setComment("");
                 localStorage.removeItem("userTitle");
                 localStorage.removeItem("titleId");
                 navigate("/post");

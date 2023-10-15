@@ -8,21 +8,16 @@ import { authContext } from "../context/AuthContext";
 function FieldCardDashboard(props) {
   const { name, picture } = props;
   const navigate = useNavigate();
-  const { DeleteField, GetfieldData, fieldDefault } = useContext(fieldContext);
-  const { AuthenUser} =useContext(authContext)
-  
-  AuthenUser()
-  const admin = localStorage.getItem('admin')
-  console.log(admin);
-  // const HandleDelete = () => {
-  //   console.log(fieldDefault);
-  // };
 
- 
+  const { AuthenUser } = useContext(authContext);
+
+  AuthenUser();
+  const admin = localStorage.getItem("admin");
+  console.log(admin);
 
   return (
     <div className="">
-      <div  className="fieldcard d-flex justify-content-between align-items-center p-2 mt-3">
+      <div className="fieldcard d-flex justify-content-between align-items-center p-2 mt-3">
         <Card.Img
           variant="top"
           src={picture}
@@ -36,7 +31,6 @@ function FieldCardDashboard(props) {
         <p className="body-text">{name}</p>
         <div className="d-flex">
           <div
-          
             onClick={() => {
               navigate("/createfield");
             }}
@@ -50,17 +44,6 @@ function FieldCardDashboard(props) {
               <Icon icon="bxs:edit" color="#cc3111" width="20" height="20" />
             </button>
           </div>
-          {/* <div onClick={HandleDelete}>
-            <button
-              style={{
-                border: "none",
-                backgroundColor: "white",
-                marginLeft: "6px",
-              }}
-            >
-              <Icon icon="mdi:bin" color="#cc3111" width="20" height="20" />
-            </button>
-          </div> */}
         </div>
       </div>
     </div>

@@ -75,9 +75,8 @@ function EditProfile() {
   };
 
   const handleBack = () => {
-    setInput({name:'',age:'',position:''});
+    setInput({ name: "", age: "", position: "" });
     navigate("/home");
-    
   };
   return (
     <div className="workspace d-flex flex-column align-items-center">
@@ -186,5 +185,4 @@ function EditProfile() {
   );
 }
 
-// ----------ทำ send post เพื่อบันทึกภาพลง DB-------------
 export default EditProfile;

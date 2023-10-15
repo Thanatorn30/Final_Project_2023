@@ -5,10 +5,10 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 
 function Cards(props) {
-  const {deletePost,fetchTitle} = useContext(playerContext)
+  const { deletePost, fetchTitle } = useContext(playerContext);
   const { comment, name, date, post, value } = props;
   const navigate = useNavigate();
-  
+
   return (
     <Card
       style={{
@@ -27,9 +27,8 @@ function Cards(props) {
             <div>
               <Icon
                 onClick={() => {
-                  deletePost(value)
-                  console.log('delete')
-                
+                  deletePost(value);
+                  console.log("delete");
                 }}
                 icon="solar:trash-bin-2-bold"
                 color="#cc3111"
@@ -39,8 +38,8 @@ function Cards(props) {
 
               <Icon
                 onClick={async () => {
-                  await fetchTitle(value)
-                  localStorage.setItem("titleId", JSON.stringify(value))
+                  await fetchTitle(value);
+                  localStorage.setItem("titleId", JSON.stringify(value));
                   navigate("/mypost");
                 }}
                 style={{ marginLeft: "16px" }}

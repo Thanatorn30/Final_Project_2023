@@ -31,11 +31,11 @@ const FieldContextProvider = ({ children }) => {
         })
         .then((data) => {
           if (data.data.msg === "Can not delete") {
-            alert("can not delete")
-            navigate("/fielddashboard")
-          }else{
-            alert("delete success")
-            navigate("/fielddashboard")
+            alert("can not delete");
+            navigate("/fielddashboard");
+          } else {
+            alert("delete success");
+            navigate("/fielddashboard");
           }
         })
         .catch((err) => console.log(err));

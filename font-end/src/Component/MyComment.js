@@ -17,7 +17,6 @@ function MyComment() {
   FetchComment(userId);
   console.log(fetchAllComment);
 
- 
   const navigate = useNavigate();
 
   return (
@@ -55,7 +54,7 @@ function MyComment() {
               />
             ))
           ) : (
-            <Loading margintop={'300px'}/>
+            <Loading margintop={"300px"} />
           )}
         </div>
       </div>

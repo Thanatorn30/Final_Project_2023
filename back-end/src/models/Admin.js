@@ -16,16 +16,5 @@ module.exports = (sequelize, DataTypes) => {
     { underscored: true }
   );
 
-  // Admin.associate = (db) => {
-  //   Admin.hasMany(db.Field, {
-  //     foreignKey: {
-  //       name: "admin_id",
-  //       allowNull: false,
-  //     },
-  //     onDelete: "RESTRICT",
-  //     onUpdate: "RESTRICT",
-  //   });
-  // };
-
   return Admin;
 };

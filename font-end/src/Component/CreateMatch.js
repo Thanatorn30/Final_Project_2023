@@ -10,7 +10,7 @@ import { roomContext } from "../context/RoomContext";
 function CreateMatch() {
   const { AuthenUser } = useContext(authContext);
   const { field, GetfieldData } = useContext(fieldContext);
-  const {setMatchday} = useContext(roomContext)
+  const { setMatchday } = useContext(roomContext);
   const [createroom, setcreateroom] = useState({
     fieldId: "",
     date: "",
@@ -40,12 +40,11 @@ function CreateMatch() {
             alert("Please change date");
           } else {
             alert("Create room success");
-            
+
             console.log(data.data);
-            
+
             navigate("/alert");
           }
-          
         })
         .catch((err) => console.log(err));
     } catch (err) {
@@ -107,7 +106,7 @@ function CreateMatch() {
                   <div
                     className="text-search-result"
                     key={index}
-                    onClick={()=>handleFieldId(item.id, item.fieldName)}
+                    onClick={() => handleFieldId(item.id, item.fieldName)}
                   >
                     <p style={{ margin: "8px" }}>{item.fieldName}</p>
                   </div>

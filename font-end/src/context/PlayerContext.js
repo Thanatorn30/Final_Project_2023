@@ -13,8 +13,6 @@ const PLayerContextProvider = ({ children }) => {
   const [title, setTitle] = useState(null);
   const [editpost, setEditPost] = useState(false);
 
-  
-
   const saveUserId = async (data) => {
     await localStorage.setItem("userId", JSON.stringify(data));
     navigate("/vote");
@@ -36,7 +34,6 @@ const PLayerContextProvider = ({ children }) => {
   };
 
   const postComment = async (playerId, date, title) => {
-    // console.log({date:date,title:title});
     const token = localStorage.getItem("user");
     await axios
       .post(
@@ -85,7 +82,7 @@ const PLayerContextProvider = ({ children }) => {
       .then((data) => {
         console.log(data);
         setComment("");
-        setTitle('')
+        setTitle("");
         navigate("/post");
       })
       .catch((err) => console.log(err));
@@ -120,21 +117,18 @@ const PLayerContextProvider = ({ children }) => {
   };
 
   const cardColor = (level) => {
-    if(level >= 50){
-      return "rgba(220, 178, 253, 1)"
-    }else if(level >= 40 && level <50){
-      return "rgba(178, 240, 253, 1)"
+    if (level >= 50) {
+      return "rgba(220, 178, 253, 1)";
+    } else if (level >= 40 && level < 50) {
+      return "rgba(178, 240, 253, 1)";
+    } else if (level >= 20 && level < 40) {
+      return "rgba(253, 241, 178, 1)";
+    } else if (level >= 10 && level < 20) {
+      return "rgba(218, 218, 218, 1)";
+    } else {
+      return "rgba(253, 178, 178, 1)";
     }
-    else if(level >= 20 && level < 40){
-      return "rgba(253, 241, 178, 1)"
-    }
-    else if(level >= 10 && level < 20){
-      return "rgba(218, 218, 218, 1)"
-    }
-    else{
-      return "rgba(253, 178, 178, 1)"
-    }
-  }
+  };
 
   return (
     <playerContext.Provider
@@ -156,7 +150,7 @@ const PLayerContextProvider = ({ children }) => {
         updatePost,
         deletePost,
         setEditPost,
-        cardColor
+        cardColor,
       }}
     >
       {children}

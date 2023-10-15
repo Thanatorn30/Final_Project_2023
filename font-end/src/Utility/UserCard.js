@@ -5,12 +5,9 @@ import { authContext } from "../context/AuthContext";
 import { playerContext } from "../context/PlayerContext";
 
 function UserCard(props) {
-  const {cardColor} = useContext(playerContext)
-  // const {
-  //   user: { name, age, position, profileImage },
-  // } = useContext(authContext);
+  const { cardColor } = useContext(playerContext);
 
-  const { name, age, position, profileImage,vote,level } = props;
+  const { name, age, position, profileImage, vote, level } = props;
 
   return (
     <div>

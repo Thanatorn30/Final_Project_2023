@@ -10,7 +10,7 @@ function Login() {
     password: "",
   });
 
-  const {getAdmin} = useContext(authContext)
+  const { getAdmin } = useContext(authContext);
   const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
@@ -27,18 +27,15 @@ function Login() {
     await axios
       .post("http://localhost:3333/login", input)
       .then((data) => {
-        if(data.data.token){
+        if (data.data.token) {
           localStorage.setItem("user", data.data.token);
           if (data.data.user.email === "admin@gmail.com") {
-            getAdmin(data.data.user.email)
+            getAdmin(data.data.user.email);
             navigate("/fielddashboard");
           } else {
             navigate("/home");
-
           }
-
-        }
-        else{
+        } else {
           alert("email or password is invalid");
           console.log(data.data.token);
         }

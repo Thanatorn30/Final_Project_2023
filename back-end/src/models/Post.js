@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.belongsTo(db.User, {
       foreignKey: {
         name: "user_id",
-        allowNull: false
+        allowNull: false,
       },
       onDelete: "RESTRICT",
       onUpdate: "RESTRICT",
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.belongsTo(db.UserPost, {
       foreignKey: {
         name: "user_post_id",
-        allowNull: false
+        allowNull: false,
       },
       onDelete: "RESTRICT",
       onUpdate: "RESTRICT",

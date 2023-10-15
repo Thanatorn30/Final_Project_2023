@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
       join_status: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        validate: { notEmpty: true }
-      }
+        validate: { notEmpty: true },
+      },
     },
     { underscored: true }
   );
@@ -21,16 +21,15 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "RESTRICT",
     });
 
-    Join.belongsTo(db.Room,{
+    Join.belongsTo(db.Room, {
       foreignKey: {
-          name: "room_id",
-          allowNull: true,
-        },
-        onDelete: "RESTRICT",
-        onUpdate: "RESTRICT",
-  })
+        name: "room_id",
+        allowNull: true,
+      },
+      onDelete: "RESTRICT",
+      onUpdate: "RESTRICT",
+    });
   };
-
 
   return Join;
 };

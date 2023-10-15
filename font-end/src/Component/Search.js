@@ -10,15 +10,8 @@ import { Icon } from "@iconify/react";
 import axios from "axios";
 import Loading from "../Utility/loading";
 function Search() {
-  const { AuthenUser, user } = useContext(authContext);
+  const { AuthenUser } = useContext(authContext);
   const {
-    setAllRooms,
-    roomData,
-    GetallRoom,
-    allRooms,
-    alert,
-    setAlert,
-    // ---------------------------------
     searchResult,
     findRoom,
     search,
@@ -27,23 +20,17 @@ function Search() {
     openSearch,
     handleSearchOpen,
     GetSearchRoom,
-    CheckUserJoin,
-    checkUser,
-    findRoomToJoin,
 
     // --------------------------------
   } = useContext(roomContext);
   const { field, GetfieldData } = useContext(fieldContext);
   const [input, setInput] = useState("");
-  const [allRoom, setAllRoom] = useState(null);
 
   GetfieldData();
   AuthenUser();
   GetRoom();
-  
+
   console.log(findRoom);
-  
-  
 
   const handleChangeInput = (e) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
@@ -80,7 +67,7 @@ function Search() {
           </div>
         </div>
         {/* ----------------Room Card------------------  */}
-        {searchResult === "Not found"  || findRoom == ''? (
+        {searchResult === "Not found" || findRoom == "" ? (
           <div style={{ textAlign: "center", fontSize: "25px", color: "red" }}>
             <p>Not Found</p>
           </div>
@@ -93,10 +80,10 @@ function Search() {
             height: searchResult == "Not found" ? "600px" : "660px",
           }}
         >
-          {findRoom ?
+          {findRoom ? (
             findRoom.map((item, index) => (
               <FieldCard
-              key={index}
+                key={index}
                 field={item.Room.Field.imageField}
                 map={item.Room.Field.map}
                 date={item.Room.Create.date}
@@ -107,18 +94,14 @@ function Search() {
                 playerJoin={item.sumUser}
                 roomId={item.room_id}
                 value={item}
-               
-                
-                // checkUser={item.Room.Create.user_id}
               />
-            )):
-            <Loading margintop={'150px'}/>
-            }
+            ))
+          ) : (
+            <Loading margintop={"150px"} />
+          )}
         </div>
       </div>
 
-      {/* ---------------Search filter------------------- */}
-      {/* ----------------------------------dropdown---------------------- */}
       {openSearch ? (
         <div
           style={{
@@ -193,7 +176,7 @@ function Search() {
                 />
               </div>
             </div>
-            <div onClick={()=>GetSearchRoom()}>
+            <div onClick={() => GetSearchRoom()}>
               <NormalButton width={"326px"}>SEARCH</NormalButton>
             </div>
           </div>
